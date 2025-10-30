@@ -1,79 +1,141 @@
 body{
     box-sizing: border-box;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     background-color: #343131;
     font-family: 'Verdana';
-    position:absolute;
+    /* * REMOVED 'position: absolute;'
+     * ADDED 'min-height: 100vh;' to ensure it fills the screen
+     */
+    min-height: 100vh;
 }
 
 .navbar{
-    display:flex;
+    display: flex;
     flex-direction: row;
     line-height: 21px;
-    height:10rem;
-    position:fixed;
+    height: 10rem;
+    /* * REMOVED 'position: fixed;' (it was being overridden by 'relative' anyway)
+     * REMOVED 'width: 100vw;' (as a block element, it's 100% by default)
+     */
     background-color: #111417;
-    width: 100vw;
-    color:white;
+    color: white;
     font-size: large;
     justify-content: center;
-    gap:15px;
+    gap: 15px;
     position: relative;
+    /* ADDED this to prevent content from jumping on small screens */
+    flex-wrap: wrap; 
 }
 
 .navbar img{
-    height:8rem;
+    height: 8rem;
     padding-top: 7px;
 }
 
 .navbar h1{
-    height:8rem;
+    height: 8rem;
     padding-top: 30px;
 }
 
 form{
     display: flex;
     flex-direction: column;
-    padding-top:45px;
+    padding-top: 45px;
     align-items: center;
-    gap:15px;
+    gap: 15px;
     color: white;
 }
 
 label{
-    height:35px;
+    height: 35px;
     font-size: large;
 }
 
 input{
-    height:70px;
-    width: 600px;
+    height: 70px;
+    /* * CHANGED from 'width: 600px;'
+     * This is now flexible, up to a max of 600px
+     */
+    max-width: 600px;
+    width: 90%; 
+    /* ADDED to make sure text is usable */
+    font-size: 1.2rem;
+    padding: 0 10px;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
 }
 
 button{
     height: 50px;
-    width:100px;
+    width: 100px;
     cursor: pointer;
 }
 
 #result{
-    height:170px;
-    width: 170px;
+    height: 170px;
+    /* * CHANGED 'width: 170px;' to 'min-width'
+     * This lets it participate in flex/grid layouts better
+     */
+    min-width: 170px; 
     margin: auto;
     margin-top: 50px;
-    color:white;
+    color: white;
+    /* ADDED this to see text if it wraps */
+    text-align: center; 
 }
 
 footer{
     background-color: #111417;
     color: white;
-    height:100px;
+    height: 100px;
     align-content: center;
-    padding-left: 550px;
+    /*
+     * REMOVED 'padding-left: 550px;'
+     * REPLACED with text-align and padding
+     */
+    text-align: center;
+    padding: 0 15px;
 }
 
 a{
     text-decoration: none;
     color: white;
+}
+
+/* ================================== */
+/* MOBILE STYLES             */
+/* ================================== */
+@media (max-width: 650px) {
+    
+    .navbar {
+        /* Stack logo and title vertically */
+        flex-direction: column;
+        /* Let height adjust to content */
+        height: auto; 
+        gap: 0;
+        padding: 15px 0;
+    }
+
+    .navbar img {
+        height: 5rem; /* Smaller logo */
+        padding-top: 0;
+    }
+
+    .navbar h1 {
+        height: auto; /* Let height adjust */
+        padding-top: 0;
+        margin: 0; /* Remove default h1 margin */
+        font-size: 1.5rem; /* Smaller title */
+        text-align: center;
+    }
+
+    input {
+        /* Use 90% of the screen width */
+        width: 90%;
+        height: 50px; /* Make input a bit shorter */
+    }
+
+    label {
+        font-size: medium; /* Smaller label text */
+    }
 }
