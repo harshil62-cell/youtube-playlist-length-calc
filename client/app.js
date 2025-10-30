@@ -1,5 +1,3 @@
-const API_KEY = 'AIzaSyCpHjzknwlO01e2Hwi-TBMHzkUzODwRwD4'; 
-
 const form = document.getElementById('form');
 const urlInput = document.getElementById('yt');
 const resultDiv = document.getElementById('result');
