@@ -19,7 +19,7 @@ async function handleSubmit(event) {
       return;
     }
 
-    const response = await fetch(`http://localhost:5000/api/playlistInfo?id=${playlistId}`);
+    const response = await fetch(`https://youtube-playlist-length-calc.onrender.com/api/playlistInfo?id=${playlistId}`);
     const data = await response.json();
 
     if (!response.ok) {
